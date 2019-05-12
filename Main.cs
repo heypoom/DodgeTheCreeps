@@ -25,19 +25,12 @@ public class Main : Node {
         hud.UpdateScore(_score);
         hud.ShowMessage("Get Ready!");
 
-        GetNode<Timer>("StartTimer").Start();
+        NewGame();
     }
 
     public void OnStartTimerTimeout() {
         GetNode<Timer>("MobTimer").Start();
         GetNode<Timer>("ScoreTimer").Start();
-
-        var screenSize = GetViewport().GetSize();
-
-        var x = _random.Next(0, (int) screenSize.x);
-        var y = _random.Next(0, (int) screenSize.y);
-
-        GetNode<Player>("Player").Start(new Vector2(x, y));
     }
 
     public void OnScoreTimerTimeout() {
