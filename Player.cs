@@ -17,13 +17,18 @@ public class Player : Area2D {
     }
 
     public void Start(Vector2 position) {
+        GD.Print("Player.Start()");
+
         Position = position;
         Show();
+
         GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
     }
 
     private void OnPlayerBodyEntered(PhysicsBody2D body) {
         Hide();
+
+        GD.Print("Player Hit!");
 
         EmitSignal("Hit");
 
