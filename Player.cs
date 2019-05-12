@@ -28,8 +28,6 @@ public class Player : Area2D {
     private void OnPlayerBodyEntered(PhysicsBody2D body) {
         Hide();
 
-        GD.Print("Player Hit!");
-
         EmitSignal("Hit");
 
         GetNode<CollisionShape2D>("CollisionShape2D")

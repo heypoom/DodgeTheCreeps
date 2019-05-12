@@ -68,6 +68,8 @@ public class Main : Node {
     }
 
     private void OnGameOver() {
+        GD.Print("Game Over!");
+
         GetNode<Timer>("MobTimer").Stop();
         GetNode<Timer>("ScoreTimer").Stop();
 
