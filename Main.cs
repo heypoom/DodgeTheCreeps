@@ -2,7 +2,7 @@ using System;
 using Godot;
 
 public class Main : Node {
-    [Export] public PackedScene Mob;
+    [Export] private PackedScene Mob;
 
     private int _score;
 
@@ -28,18 +28,18 @@ public class Main : Node {
         NewGame();
     }
 
-    public void OnStartTimerTimeout() {
+    private void OnStartTimerTimeout() {
         GetNode<Timer>("MobTimer").Start();
         GetNode<Timer>("ScoreTimer").Start();
     }
 
-    public void OnScoreTimerTimeout() {
+    private void OnScoreTimerTimeout() {
         _score++;
 
         GetNode<HUD>("HUD").UpdateScore(_score);
     }
 
-    public void OnMobTimerTimeout() {
+    private void OnMobTimerTimeout() {
         // Choose a random location on Path2D.
         var mobSpawnLocation = GetNode<PathFollow2D>("MobPath/MobSpawnLocation");
         mobSpawnLocation.SetOffset(_random.Next());
@@ -74,7 +74,7 @@ public class Main : Node {
         GetNode<HUD>("HUD").ShowGameOver();
     }
 
-    public void NewGame() {
+    private void NewGame() {
         _score = 0;
 
         var player = GetNode<Player>("Player");
